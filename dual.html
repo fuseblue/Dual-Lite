@@ -33,7 +33,6 @@
     <meta name="color:Header Toggle Hover" content="#231F20" />
     <meta name="if:Header Background Transparent" content="0"/>
     <meta name="if:Header Scroll" content="1"/>
-    <meta name="if:Hide Header on Scroll" content="1"/>
     <meta name="if:Standard Header Toggle" content="1"/>
     <meta name="if:Emoji Header Toggle" content="0"/>
     <meta name="text:Emoji" content="smiley"/>
@@ -187,11 +186,6 @@
 <script>
 
     var hideHeader = false;
-    {block:IfHeaderScroll}
-    {block:IfHideHeaderonScroll}
-    var hideHeader = true;
-    {/block:IfHideHeaderonScroll}
-    {/block:IfHeaderScroll}
     
     {block:IfDisqusShortname}
     disqusShortname = '{text:Disqus Shortname}';
@@ -320,15 +314,14 @@
             }
         {/block:IfHeaderBackgroundTransparent}
 
-       .hide-header {
-            top: -100px;
-        }
+
 
         {block:IfHeaderBackgroundImage}
             .header-image {
                 height:{text:Header Background Height};
                 width:100%;
                 background:url('{image:Header Background Image}') center bottom no-repeat;
+                background-size:cover;
             }
         {/block:IfHeaderBackgroundImage}
 
@@ -856,35 +849,35 @@
         /* Theme Styles */
         
 * {
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 html, body {
-	margin: 0;
-	padding: 0;
+    margin: 0;
+    padding: 0;
 }
 html {
-	-moz-osx-font-smoothing: grayscale;
-	-webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
 }
 
 iframe, img, embed, object, video {
-	max-width: 100%;
+    max-width: 100%;
 }
 img {
-	height: auto;
-	max-width: 100%;
-	vertical-align: middle;
-	border: 0;
+    height: auto;
+    max-width: 100%;
+    vertical-align: middle;
+    border: 0;
 }
 
 a:focus{outline:none}
 a {
-	outline:0;
+    outline:0;
 }
 a:hover {
-	outline:0;
+    outline:0;
 }
 select:focus {
   outline: none;
@@ -913,8 +906,8 @@ input {
 }
 
 h1, h2, h3, h4, h5, h6, p, dl, ol, ul, blockquote, table, figure {
-	margin-top: 0;
-	margin-bottom: 15px;
+    margin-top: 0;
+    margin-bottom: 15px;
 }
 
 #posts .wrapper {
@@ -922,17 +915,17 @@ h1, h2, h3, h4, h5, h6, p, dl, ol, ul, blockquote, table, figure {
 }
 
 .wrapper {
-	max-width: 900px;
-	margin-left: auto;
-	margin-right: auto;
-	width: 100%;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
   padding:0 50px;
 }
 
 .wrapper:after, .post-footer:after, .header:after, .widget:after, .photo-slideshow:after, .atx-post:after, .tags:after {
-	content: "";
-	display: table;
-	clear: both;
+    content: "";
+    display: table;
+    clear: both;
 }
 
 
@@ -942,25 +935,25 @@ h1, h2, h3, h4, h5, h6, p, dl, ol, ul, blockquote, table, figure {
 
 
 .left {
-	float:left;
+    float:left;
 }
 
 .right {
-	float:right;
+    float:right;
 }
 
 .share-modal {
-	left: -10px;
-	background-color: #0c0c0c;
-	color: #ffffff;
-	margin: 0;
-	padding:0;
-	opacity: 0;
-	position: absolute;
-	visibility: hidden;
-	z-index: 2;
-	text-align:center;
-	top: 24px;
+    left: -10px;
+    background-color: #0c0c0c;
+    color: #ffffff;
+    margin: 0;
+    padding:0;
+    opacity: 0;
+    position: absolute;
+    visibility: hidden;
+    z-index: 2;
+    text-align:center;
+    top: 24px;
 }
 
 
@@ -977,8 +970,8 @@ h1, h2, h3, h4, h5, h6, p, dl, ol, ul, blockquote, table, figure {
 }
 
 .share-toggle.open .share-modal span {
-	opacity:1;
-	visibility:visible;
+    opacity:1;
+    visibility:visible;
 }
 
 .share-modal span a {
@@ -991,7 +984,7 @@ h1, h2, h3, h4, h5, h6, p, dl, ol, ul, blockquote, table, figure {
 }
 
 .share-modal *:last-child {
-	border:none;
+    border:none;
 }
 
 .share-modal span a:before {
@@ -1031,27 +1024,27 @@ h1, h2, h3, h4, h5, h6, p, dl, ol, ul, blockquote, table, figure {
 
 
 .share-toggle.open  .share-modal {
-	opacity: 1;
-	visibility: visible;
-	margin-bottom: 20px;
-	-webkit-animation-name: fadeInDown;
-	animation-name: fadeInDown;
+    opacity: 1;
+    visibility: visible;
+    margin-bottom: 20px;
+    -webkit-animation-name: fadeInDown;
+    animation-name: fadeInDown;
 }
 
 .overlay {
-	position:absolute;
-	top:0;
-	left:0;
-	height:100%;
-	width:100%;
-	z-index:1;
-	-webkit-transition: background 0.2s linear;
-	-moz-transition: background 0.2s linear;
-	transition: background 0.2s linear;
+    position:absolute;
+    top:0;
+    left:0;
+    height:100%;
+    width:100%;
+    z-index:1;
+    -webkit-transition: background 0.2s linear;
+    -moz-transition: background 0.2s linear;
+    transition: background 0.2s linear;
 }
 
 .media {
-	position:relative;
+    position:relative;
 }
 
 
@@ -1454,50 +1447,50 @@ body.modal-open {
 }
 
 .atx-post-pagination {
-	position:fixed;
-	top:50%;
-	width:100%;
-	z-index:999999;
+    position:fixed;
+    top:50%;
+    width:100%;
+    z-index:999999;
 }
 
 .post-pagination {
-	position:fixed;
-	top:50%;
-	width:100%;
-	z-index:99;
+    position:fixed;
+    top:50%;
+    width:100%;
+    z-index:99;
 }
 
 .prev-post, .next-post {
-	background:#000000;
-	color:#ffffff;
-	padding:12px;
-	transition:all 0.2s ease;
-	-webkit-transition:all 0.2s ease;
-	text-transform:uppercase;
-	font-size:12px;
-	letter-spacing:1px;
-	z-index:99999;
+    background:#000000;
+    color:#ffffff;
+    padding:12px;
+    transition:all 0.2s ease;
+    -webkit-transition:all 0.2s ease;
+    text-transform:uppercase;
+    font-size:12px;
+    letter-spacing:1px;
+    z-index:99999;
 }
 
 .prev-post:hover, .next-post:hover {
-	color:#ffffff;
-	background:#222222;
+    color:#ffffff;
+    background:#222222;
 }
 
 .post-pagination .fa {
-	font-size:12px;
+    font-size:12px;
 }
 
 .prev-post {
-	float:left;
-	position:fixed;
-	left:0;
+    float:left;
+    position:fixed;
+    left:0;
 }
 
 .next-post {
-	float:right;
-	position:fixed;
-	right:0;
+    float:right;
+    position:fixed;
+    right:0;
 }
 
 .atx-post-pagination .next-post {right:15px}
@@ -1576,12 +1569,12 @@ body.modal-open .close-post {
   }
 
   .prev-post, .next-post {
-  	bottom:0 !important;
+    bottom:0 !important;
   }
 
   .post-pagination {
-  	bottom:0 !important;
-  	top:none;
+    bottom:0 !important;
+    top:none;
   }
   #disqus_thread {
     display:none;
@@ -1602,7 +1595,7 @@ body.modal-open .close-post {
   }
 
   .post-footer {
-  	padding:20px 20px 20px;
+    padding:20px 20px 20px;
   }
   
 }
@@ -2004,11 +1997,11 @@ body.modal-open .close-post {
                     var disqus_title ="{block:PostTitle}{PostTitle}{/block:PostTitle}";
                 </script>
                 <script>
-                	(function() {
-                		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                		dsq.src = '//' + disqusShortname + '.disqus.com/embed.js';
-                		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                	})();
+                    (function() {
+                        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                        dsq.src = '//' + disqusShortname + '.disqus.com/embed.js';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                    })();
                 </script>
                 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
               {/block:IfDisqusShortname} 
