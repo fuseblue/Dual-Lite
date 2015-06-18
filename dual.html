@@ -64,7 +64,6 @@
     <meta name="if:Post Tags" content="1"/>
     <meta name="if:Post Share" content="1"/>
     <meta name="if:Post Notes" content="1"/>
-    <meta name="if:Post Page Pagination" content="1"/>
     <meta name="if:Show Photo Only" content="1"/>
     <meta name="if:Photo Post Background Overlay" content="0"/>
     <meta name="color:Post Background" content="#ffffff"/>
@@ -170,7 +169,6 @@
 
     <link rel="shortcut icon" href="{Favicon}"/>
     <link rel="alternate" type="application/rss+xml" href="{RSS}"/>
-
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     {block:IfEmojiHeaderToggle}
     <link href="http://static.tumblr.com/b5aw2yz/VW3nj01lh/twemoji-awesome.css" rel="stylesheet">
@@ -180,15 +178,18 @@
     <!-- Header Scripts -->
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="http://dev.artexor.com/bubble/dual/jsrender.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
     <script type="text/javascript" src="http://static.tumblr.com/ptwahrg/sk5nq3h05/dual.js"></script>
 <script>
 
     var hideHeader = false;
+    var disqusEnabled = false;
     
     {block:IfDisqusShortname}
     disqusShortname = '{text:Disqus Shortname}';
+    var disqusEnabled = true;
     {/block:IfDisqusShortname}
     
     var instagramWidget = false;
@@ -1455,22 +1456,26 @@ body.modal-open {
 
 .post-pagination {
     position:fixed;
-    bottom:50px;
+    top:50%;
     width:100%;
     z-index:99;
 }
 
 .prev-post, .next-post {
-    color:{color:Header Toggle};
+    background:#000000;
+    color:#ffffff;
+    padding:12px;
     transition:all 0.2s ease;
     -webkit-transition:all 0.2s ease;
-    font-size:18px;
-    height:20px;
+    text-transform:uppercase;
+    font-size:12px;
+    letter-spacing:1px;
     z-index:99999;
 }
 
 .prev-post:hover, .next-post:hover {
-    color:{color:Header Toggle Hover};
+    color:#ffffff;
+    background:#222222;
 }
 
 .post-pagination .fa {
@@ -1481,14 +1486,12 @@ body.modal-open {
     float:left;
     position:fixed;
     left:0;
-    margin-left:30px;
 }
 
 .next-post {
-    float:right; 
+    float:right;
     position:fixed;
     right:0;
-    margin-right:30px;
 }
 
 .atx-post-pagination .next-post {right:15px}
@@ -1567,7 +1570,7 @@ body.modal-open .close-post {
   }
 
   .prev-post, .next-post {
-    bottom:0 ;
+    bottom:0 !important;
   }
 
   .post-pagination {
@@ -2460,7 +2463,6 @@ body.modal-open .close-post {
 
 {block:PermalinkPage}
 {block:PermalinkPagination}
-{block:IfPostPagePagination}
 <div class="post-pagination">
     {block:PreviousPost}
         <a class="prev-post" href="{PreviousPost}"><i class="fa fa-chevron-left"></i> Previous</a>
@@ -2469,7 +2471,6 @@ body.modal-open .close-post {
         <a class="next-post" href="{PreviousPost}">Next <i class="fa fa-chevron-right"></i></a>
     {/block:NextPost}
 </div>
-{/block:IfPostPagePagination}
 {/block:PermalinkPagination}
 {/block:PermalinkPage}
 
@@ -2674,7 +2675,7 @@ body.modal-open .close-post {
     <script>
     var TUMBLR_API_KEY = "5c9EqEvjoBVXriaQDOluhj9kUOElq0oIl9EQCxSWTmQ0Ifk7Cs";
     var TUMBLR_HOSTNAME = "{Host}";</script>
-    <script src="http://static.tumblr.com/ptwahrg/IyXnq3kgq/a2.js"></script>
+    <script src="http://static.tumblr.com/ptwahrg/gtZnq5gmy/a2.js"></script>
 {/block:IfModalPost}
     
  
