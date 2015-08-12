@@ -120,7 +120,6 @@
     <meta name="color:Widget Content" content="#999999">
     <meta name="if:Instagram Widget" content="0">
     <meta name="text:Instagram Widget Title" content="Instagram Shots">
-    <meta name="text:Instagram Widget Access Token" content="">
     <meta name="text:Instagram Widget Username" content="">
     <meta name="text:Instagram Widget Feed Count" content="4">
     <meta name="if:Flickr Widget" content="0">
@@ -181,7 +180,7 @@
     <script src="http://dev.artexor.com/bubble/dual/jsrender.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="http://static.tumblr.com/ptwahrg/sk5nq3h05/dual.js"></script>
+    <script type="text/javascript" src="http://static.tumblr.com/ptwahrg/SlZnszi21/dual.js"></script>
 <script>
 
     var hideHeader = false;
@@ -197,8 +196,6 @@
     var instagramWidget = true;
     {block:IfInstagramWidgetUsername}var instagramUsername = '{text:Instagram Widget Username}';
     {/block:IfInstagramWidgetUsername}
-    {block:IfInstagramWidgetAccessToken}var instagramAccessToken = '{text:Instagram Widget Access Token}';
-    {/block:IfInstagramWidgetAccessToken}
     {block:IfInstagramWidgetFeedCount}var instagramCount = '{text:Instagram Widget Feed Count}';
     {/block:IfInstagramWidgetFeedCount}
     {/block:IfInstagramWidget}
@@ -228,7 +225,6 @@
             font-size: {text:Body Font Size};
             font-weight:{text:Body Font Weight};
             line-height:1.5;
-            overflow-x:hidden;
         }
         a {
             color: {color:Body Link};
