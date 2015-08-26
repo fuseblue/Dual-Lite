@@ -1144,6 +1144,14 @@ display:inline-block;
 margin-left:7px;
 }
 
+.atx-popup span.share-pinterest {
+    display:none;
+}
+
+.atx-popup span.share-pinterest.show {
+    display: block;
+}
+
 .pagination {
 padding:40px 0;
 }
@@ -2414,7 +2422,7 @@ body.modal-open .close-post {
 
 <span class="share-google"><a class="share-icon-google-plus" href="https://plus.google.com/share?url={Permalink}" target="_new"></a></span>
 
-<span class="share-pinterest"><a class="share-icon-pinterest" target="_new" href="http://pinterest.com/pin/create/button/?url={Permalink}&media="></a></span>    
+{block:Photo}<span class="share-pinterest"><a class="share-icon-pinterest" target="_new" href="http://pinterest.com/pin/create/button/?url={Permalink}&media={PhotoURL-500}"></a></span>{/block:Photo}    
 </div>    
 </li>
 
@@ -2528,16 +2536,11 @@ body.modal-open .close-post {
 
 
 
-    $(document).on("click",".share-toggle",function(){
+    $(document).on("click",".share-toggle",function(e){
         $(this).toggleClass("open");
     });
-
-    
-    $(document).on("hover","article .inner",function(){
-        //do nothing if hovered over
-    }, function(){
-        //hide on hover out
-    $('.share-toggle').removeClass('open');
+    $(document).on('mouseleave',"article .inner", function(){
+        $('.share-toggle').removeClass('open');
     });
 
 
@@ -2672,7 +2675,7 @@ body.modal-open .close-post {
     <script>
     var TUMBLR_API_KEY = "5c9EqEvjoBVXriaQDOluhj9kUOElq0oIl9EQCxSWTmQ0Ifk7Cs";
     var TUMBLR_HOSTNAME = "{Host}";</script>
-    <script src="http://static.tumblr.com/ptwahrg/gtZnq5gmy/a2.js"></script>
+    <script src="http://static.tumblr.com/ptwahrg/sTmntpirn/a2.js"></script>
 {/block:IfModalPost}
     
  
