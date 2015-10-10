@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <!-- Dual theme by Remedy.  leremedy.com  -->
-<!-- Latest Update v1.2 - 27th August 2015 -->
+<!-- Latest Update v1.2 - 10th October 2015 -->
 <!-- Released 20 June 2015, leremedy.com/themes/dual/-->
 <!-- Help and FAQ: leremedy.com/support -->
 
@@ -320,19 +320,19 @@ $(document).on("click",".share-toggle",function(){$(this).toggleClass("open")}),
 
     {block:Twitter}
     <!-- Twitter-->
-    function recent_tweets(data) {
-      for (i=0; i<{text:Twitter Widget Feed Count}; i++) {
-        document.getElementById("twitter").innerHTML =
-          document.getElementById("twitter").innerHTML +
-          '<li class="tweet"><p>' + twttr.txt.autoLink( data[i].text )  +
-          // &mdash;
-          '<abbr> <a href="http://twitter.com/artexor/status/' +
-          (data[i].id_str ? data[i].id_str : data[i].id) +
-          '" target="_blank">' + moment.utc(data[i].created_at).fromNow() + ' </abbr></a></p></li>';
-      }
-    }
+       function recent_tweets(data) {
+          for (i=0; i<{text:Twitter Widget Feed Count}; i++) {
+            document.getElementById("twitter").innerHTML =
+              document.getElementById("twitter").innerHTML +
+              '<li class="tweet"><p>' + twttr.txt.autoLink( data[i].text )  +
+              // &mdash;
+              '<abbr> <a href="http://twitter.com/{TwitterUsername}/status/' +
+              (data[i].id_str ? data[i].id_str : data[i].id) +
+              '" target="_blank">' + moment.utc(data[i].created_at).fromNow() + ' </abbr></a></p></li>';
+          }
+        }
     {/block:Twitter}
-            
+
 
     {block:IfInstagramWidgetUserID}
     var userFeed = new Instafeed({get:"user",userId:{text:Instagram Widget UserID},limit:{text:Instagram Widget Feed Count},accessToken:"{text:Instagram Widget Access Token}"});userFeed.run();
