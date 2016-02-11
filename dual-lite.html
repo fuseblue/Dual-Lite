@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- Dual Lite by Fuse.  fuseblue.com, twitter.com/getfuse_ ,  -->
-<!-- Version 1.0 Released 28 January 2016, fuseblue.com/themes/dual-lite/changelog/-->
+<!-- Version 1.1 Released 28 January 2016, fuseblue.com/themes/dual-lite/changelog/-->
 <!-- Are you a developer? We're on Github! fuseblue.github.com/dual-lite/ -->
 <!-- Help and FAQ: fuseblue.com/support -->
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -34,6 +34,7 @@
     <meta name="select:Header Type" title="Image/Video" content=""/>
     <meta name="image:Banner Background Image" content=""/>
     <meta name="color:Banner Background" content="#fff" />
+    <meta name="if:Banner Logo" content="1"/>
     <meta name="if:Banner Icons" content="1"/>
     <meta name="color:Banner Icons" content="#fff" />
     <meta name="color:Banner Icons Hover" content="#f1f1f1" />
@@ -152,7 +153,7 @@
     </script>
     <script src="http://static.tumblr.com/evx2wil/zZUo1lb32/more-plugins-dual-lite.js"></script>
     <script src="http://static.tumblr.com/evx2wil/zZro1lb4w/animation.min.js"></script>
-    <script src="http://static.tumblr.com/evx2wil/u8so1o1dn/modal-lite.js"></script>
+    <script src="http://static.tumblr.com/evx2wil/Fwlo2eb5k/modal-lite.js"></script>
     {block:IfGoogleFonts}
     <link href='http://fonts.googleapis.com/css?family={text:Body Font Family}:{text:Body Font Weight}' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family={text:Logo Font Family}:{text:Logo Font Weight}' rel='stylesheet' type='text/css'>
@@ -160,7 +161,7 @@
     <link href='http://fonts.googleapis.com/css?family={text:Quote Font Family}:{text:Quote Font Weight}' rel='stylesheet' type='text/css'>
     {/block:IfGoogleFonts}
     <style type="text/css">
-  .mute-button {
+    .mute-button {
         position: absolute;
         bottom: 25px;
         left: 25px;
@@ -419,6 +420,9 @@
         overflow-y: hidden;
     }
     #load {
+        {block:IfNotBannerVideo}
+        display: none;
+        {/block:IfNotBannerVideo}
         background: #fff;
         position: fixed;
         top: 0;
@@ -1248,7 +1252,9 @@ input {
 }
 .page {
     position: relative;
+    {block:IfBannerVideo}
     opacity: 0;
+    {/block:IfBannerVideo}
 }
 .page.single {
     text-align:center;
@@ -2066,9 +2072,6 @@ body.modal-open .close-post {
   visibility: hidden;
   opacity: 0;
 }
-.post-video .content, .post-video .post-footer {
-    display: none;
-}
 .post-photo .post-meta, .post-photoset .post-meta {
     border-bottom: none;
 }
@@ -2076,9 +2079,11 @@ body.modal-open .close-post {
     padding: 30px 0;
 }
 /*Show photo only*/
-.post-photo .content, .post-photo .post-meta, .post-photo .tags, .post-photoset .content, .post-photoset .post-meta, .post-photoset .post-meta .tags {
+{block:IfNotPostMetaOff}
+.post-photo .content, .post-photo .post-meta, .post-photo .tags, .post-photoset .content, .post-photoset .post-meta, .post-photoset .post-meta .tags, .post-video .content, .post-video .post-footer {
     display: none;
 }
+{/block:IfNotPostMetaOff}
     </style>
 
 </head>
@@ -2231,7 +2236,10 @@ body.modal-open .close-post {
     </div>
     {block:IndexPage}
     <div id="banner" class="{select:Header Type}">
+    
+    {block:IfBannerLogo}
     <h1 class="banner-logo">{Title}</h1>
+    {/block:IfBannerLogo}
     {block:IfBannerVideo}
      <div class="mute-button">
         <svg id="vol-high" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20">
@@ -2344,14 +2352,13 @@ body.modal-open .close-post {
                     <div class="media">
                         {block:IndexPage}
                             <a href="{Permalink}" data-id="{PostID}">
-                                <div class="overlay"></div>
+                             
                                 <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" />
                             </a>
                         {/block:IndexPage}
                     
                         {block:PermalinkPage}
                         {LinkOpenTag}
-                            <div class="overlay"></div>
                             <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" />
                         {LinkCloseTag}
                         {/block:PermalinkPage}
@@ -2423,6 +2430,9 @@ body.modal-open .close-post {
                                     {/block:Photos}
                                 </div>
                             </div>
+                <div class="content">
+                        {block:Caption}{Caption}{/block:Caption}
+                    </div>
                         {/block:Photoset}            
         {block:Answer}
         <article id="{PostID}" class="{block:IndexPage}post post-answer{/block:IndexPage}" data-id="{PostID}" data-pt="answer">
@@ -2661,7 +2671,6 @@ body.modal-open .close-post {
     var userFeed = new Instafeed({get:"user",userId:{text:Instagram Widget UserID},limit:{text:Instagram Widget Feed Count},accessToken:"{text:Instagram Widget Access Token}"});userFeed.run();
     {/block:IfInstagramWidgetUserID}      
 </script>
-{block:IndexPage}
     <script>
 $(function(){
     $(window).load(function(){
@@ -2679,7 +2688,6 @@ $(function(){
             <div class="i"></div>
         </div>
     </div>
-{/block:IndexPage}
 {block:Twitter}
 <script src="/tweets.js"></script>    
 {/block:Twitter} 
