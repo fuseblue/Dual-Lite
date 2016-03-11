@@ -2558,8 +2558,6 @@ body.modal-open .close-post {
         $('.share-toggle').removeClass('open');
     });
 
-    $("article").fitVids();
-    
   $(function(){
     var $container = $('.posts');
     var isotope = $container.imagesLoaded(function(){
@@ -2596,7 +2594,9 @@ body.modal-open .close-post {
       },function( newElements ) {
         var $newElems = $( newElements ).css({ opacity: 0 });
         $newElems.imagesLoaded(function(){
+
             $('.post-photoset').inlinePhotosets();
+            $("article").fitVids();
           $container.isotope( 'appended', $newElems, true ); 
         pageNumber++; 
         Tumblr.LikeButton.get_status_by_page(pageNumber); 
