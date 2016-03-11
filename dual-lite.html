@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>{Title}{block:PostSummary} - {PostSummary}{/block:PostSummary}</title>
+    <title>{Title}{block:PostSummary}3 - {PostSummary}{/block:PostSummary}</title>
     <meta name="description" content="{block:Description}{MetaDescription}{/block:Description}"/>
     <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     <meta name="image:Body Background Image" content="0"/>
@@ -75,9 +75,9 @@
     <meta name="color:Sidebar Close Hover" content="#666666"/>
     <meta name="if:Sidebar Image Hover Opacity" content="0"/>
     <meta name="if:Navigation" content="1"/>  
-    <meta name="if:Random Link" content="1"/>    
-    <meta name="if:Archive Link" content="1"/>    
-    <meta name="if:RSS Link" content="1"/> 
+    <meta name="if:Random Link" content="0"/>    
+    <meta name="if:Archive Link" content="0"/>    
+    <meta name="if:RSS Link" content="0"/> 
     <meta name="text:Link 1 Name" content=""/>
     <meta name="text:Link 1 URL" content=""/>
     <meta name="text:Link 2 Name" content=""/>
@@ -132,10 +132,10 @@
     <meta name="text:Google Analytics ID" content=''/>
     <link rel="shortcut icon" href="{Favicon}"/>
     <link rel="alternate" type="application/rss+xml" href="{RSS}"/>
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="http://static.tumblr.com/evx2wil/QBto1mciq/instafeed.min.js"></script>
-    <script type="text/javascript" src="http://static.tumblr.com/evx2wil/eioo1mcry/dual-lite.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="http://static.tumblr.com/evx2wil/NqZo3w9n1/dual-lite.js"></script>
     <script>
         var hideHeader = false;
         var disqusEnabled = false;
@@ -161,6 +161,9 @@
     <link href='http://fonts.googleapis.com/css?family={text:Quote Font Family}:{text:Quote Font Weight}' rel='stylesheet' type='text/css'>
     {/block:IfGoogleFonts}
     <style type="text/css">
+    html {
+        overflow-y: scroll;
+    }
     .mute-button {
         position: absolute;
         bottom: 25px;
@@ -722,15 +725,12 @@
             fill: {color:Header Toggle}!important;
             transition: .3s all;
         }
-        /**/
         #posts {
             padding: 1px 0 0;
         }
         .gutter-sizer {
             width: 2%;
         }
-
-        /*2 col*/
         .post, .grid-sizer {
             width: 49%;
         }
@@ -738,19 +738,14 @@
             margin: 0 0 2%;
             text-align:center;
         }
-        /*4 col
-        article.post {
-            width:23.25%;
-            margin: 0 0 1%;
+        .post img {
+            display:block;
         }
-        */
-        
         article .inner {
             background:{color:Post Background};
             height:100%;
             position:relative;
         }
-        
         .atx-post {
             background:{color:Post Background};
         }
@@ -762,18 +757,10 @@
             position: relative;
             width:100%;
         }
-        /*4 col*/
         .posts {
             width:100%;
             margin: 37px 0 0;
         }
-        
-        /*2 col*/
-        .posts {
-            width:100%;
-            margin-top:30px;
-        }
-
         .post-quote blockquote {
             border:none;
             padding:0;
@@ -2594,12 +2581,14 @@ body.modal-open .close-post {
         itemSelector: ".post",
         bufferPx: 2000,
         localMode: true,
+        behavior:'local',
         loading: {
             img: '',
             finished: undefined,
             finishedMsg: '',
             msg: null,
-            msgText: ''
+            msgText: '',
+            speed: 'fast'
         }
       },function( newElements ) {
         var $newElems = $( newElements ).css({ opacity: 0 });
@@ -2623,7 +2612,7 @@ body.modal-open .close-post {
       $('.post-photoset').inlinePhotosets();
   });
 </script>
-    <script type="text/javascript" src="http://static.tumblr.com/evx2wil/vpWo1m8cp/plugins-dual-lite.js">
+    <script type="text/javascript" src="http://static.tumblr.com/evx2wil/w7ho3w9rl/plugins-dual-lite.js">
         $(document).ready(function() {
             isotope.isotope('layout');
     
