@@ -2557,6 +2557,9 @@ body.modal-open .close-post {
     $(document).on('mouseleave',"article .inner", function(){
         $('.share-toggle').removeClass('open');
     });
+
+    $("article").fitVids();
+    
   $(function(){
     var $container = $('.posts');
     var isotope = $container.imagesLoaded(function(){
