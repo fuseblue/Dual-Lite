@@ -161,9 +161,6 @@
     <link href='http://fonts.googleapis.com/css?family={text:Quote Font Family}:{text:Quote Font Weight}' rel='stylesheet' type='text/css'>
     {/block:IfGoogleFonts}
     <style type="text/css">
-    html {
-        overflow-y: scroll;
-    }
     .mute-button {
         position: absolute;
         bottom: 25px;
@@ -411,10 +408,13 @@
       opacity:0;
       position:fixed;
       overflow-y:scroll;
+      background-color: {color:Body Background};
     }
-    html.modal-open {
-        overflow-y: hidden;
+
+    html.modal-open body {
+        overflow: hidden;
     }
+    
     #load {
         {block:IfNotBannerVideo}
         display: none;
@@ -1706,6 +1706,7 @@ body.modal-open .close-post {
     .prev-post { left: 0; }
     .next-post { right: 0; }
     .mute-button { display: none; }
+    .overlay {display:none;}
 }
 .animated {
   -webkit-animation-duration: 1s;
